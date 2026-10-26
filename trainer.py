@@ -22,8 +22,8 @@ def load_words(path):
 
 
 def validate_rack(rack):
-    if not rack or any(letter not in POINTS and letter != '?' for letter in rack):
-        raise ValueError('Rack must contain ASCII letters or ? for blank tiles.')
+    if not isinstance(rack, str) or not 1 <= len(rack) <= 12 or any(letter not in POINTS and letter != '?' for letter in rack):
+        raise ValueError('Rack must contain 1–12 lowercase ASCII letters or ? for blank tiles.')
 
 
 def score(word, rack):
